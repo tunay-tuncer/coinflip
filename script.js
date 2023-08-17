@@ -23,7 +23,7 @@ function degreeGenerator(){
     }
     else{
         degreeToTurn = 2 + Math.floor(Math.random()*3)
-        degreeToTurn = degreeToTurn*270
+        degreeToTurn = degreeToTurn*360
 
     }
     console.log(degreeToTurn)
@@ -31,14 +31,17 @@ function degreeGenerator(){
 }
 
 function textUpdate(){
-    if(option==1){
-        yaziTextValue++
-        yaziText.textContent = `Yazı: ${yaziTextValue}`
-    }
-    else{
-        turaTextValue++
-        turaText.textContent = `Tura: ${turaTextValue}`
-    }
+    setTimeout(()=>{
+        if(option==1){
+            yaziTextValue++
+            yaziText.textContent = `Yazı: ${yaziTextValue}`
+        }
+        else{
+            turaTextValue++
+            turaText.textContent = `Tura: ${turaTextValue}`
+        }
+    },2000)
+
 }
 
 function resetGame(){
@@ -57,20 +60,17 @@ function resetCoin(){
 
 function flipCoin(){
     degreeGenerator()
-
-    setTimeout(()=>{
-        if(option==1){
-            backFace.style.transform = `rotateX(${degreeToTurn}deg)`
-            coinContainer.style.transform = `rotateX(${degreeToTurn}deg)`
-        }
-        else{
-            frontFace.style.transform = `rotateX(${degreeToTurn}deg)`
-            coinContainer.style.transform = `rotateX(${degreeToTurn}deg)`
-        }
-    },2000)
+   
+    if(option==1){
+        backFace.style.transform = `rotateX(${degreeToTurn}deg)`
+        coinContainer.style.transform = `rotateX(${degreeToTurn}deg)`
+    }
+    else{
+        frontFace.style.transform = `rotateX(${degreeToTurn}deg)`
+        coinContainer.style.transform = `rotateX(${degreeToTurn}deg)`
+    }
 
     textUpdate()
-    resetCoin()
 }
 
 
